@@ -7,12 +7,16 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export const SwapCurrency = () => {
   const [optionSend, setOptionSend] = useState<DataTokens>(TOKENS_PRICE[4]);
-  const [optionReceive, setOptionReceive] = useState<DataTokens>(TOKENS_PRICE[0]);
+  const [optionReceive, setOptionReceive] = useState<DataTokens>(
+    TOKENS_PRICE[3]
+  );
   const [openModel, setOpenModel] = useState<boolean>(false);
   const [openModelReceive, setOpenModelReceive] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [valueReceive, setValueReceive] = useState<string>("");
-  const [displayButtonType, setDisplayButtonType] = useState<DisplayType>(DisplayType.ENTER_INPUT);
+  const [displayButtonType, setDisplayButtonType] = useState<DisplayType>(
+    DisplayType.ENTER_INPUT
+  );
 
   const handleClickOpen = () => {
     setOpenModel(true);
@@ -60,10 +64,12 @@ export const SwapCurrency = () => {
     }
   };
 
+  const rate = optionSend.price / optionReceive.price;
+
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="px-6 py-5 lg:px-8 border border-gray-500 dark:border-gray-700 rounded-xl w-[480px] shadow-xl transition duration-300">
-        <div className="flex items-center justify-center py-5 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="px-6 py-5 lg:px-8 border-2 border-gray-200 dark:border-gray-400 rounded-2xl w-[480px] bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 text-gray-900 shadow-xl transition duration-300">
+        <div className="flex items-center justify-center pt-5 pb-7 sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt=""
             src="https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/SWTH.svg"
@@ -73,8 +79,8 @@ export const SwapCurrency = () => {
             Swap Currency
           </h2>
         </div>
-        <div className="bg-gray-100 rounded-lg text-gray-300 text-xl font-medium h-30 leading-5 p-4 relative">
-          <div className="flex flex-col relative rounded-2xl z-10 w-auto transition-height duration-1000 ease-in-out will-change-height">
+        <div className="bg-gray-100 rounded-2xl text-gray-300 text-xl font-medium h-30 leading-5 p-5 relative">
+          <div className="flex flex-col relative rounded-2xl z-10 w-auto transition-height duration-1000 ease-in-out">
             <div className="min-h-11 rounded-2xl w-auto">
               <div className="block text-sm font-medium leading-6 text-gray-800">
                 Amount to send
@@ -83,7 +89,7 @@ export const SwapCurrency = () => {
                 <div className="flex flex-grow">
                   <InputField onChange={handleChange} value={value} />
                 </div>
-                <div className="inline-block h-inherit">
+                <div className="inline-block">
                   <SelectOptionField
                     data={TOKENS_PRICE}
                     handleOptionClick={handleOptionClick}
@@ -102,8 +108,8 @@ export const SwapCurrency = () => {
             <ArrowDownwardIcon fontSize="small" color="primary" />
           </div>
         </div>
-        <div className="bg-gray-100 rounded-lg text-gray-500 text-xl font-medium h-30 leading-5 p-4 relative">
-          <div className="flex flex-col relative rounded-2xl z-10 w-auto transition-height duration-1000 ease-in-out will-change-height">
+        <div className="bg-gray-100 rounded-2xl text-gray-500 text-xl font-medium h-30 leading-5 p-5 relative">
+          <div className="flex flex-col relative rounded-2xl z-10 w-auto transition-height duration-1000 ease-in-out">
             <div className="min-h-11 rounded-2xl w-auto">
               <div className="block text-sm font-medium leading-6 text-gray-500">
                 Amount to receive
@@ -133,15 +139,20 @@ export const SwapCurrency = () => {
         <button
           onClick={confirmSwap}
           disabled={!value}
-          className={`relative  text-blue-950 text-lg font-medium py-4 mt-5 w-full leading-6 text-center rounded-xl outline-none border-transparent no-underline flex justify-center items-center cursor-pointer transform transition-all duration-300 ${
-            !value
-              ? "bg-gray-300 cursor-not-allowed"
-              : "bg-sky-400 hover:bg-sky-500"
+          className={`relative  text-blue-950 text-lg font-medium py-4 mt-5 w-full leading-6 text-center rounded-2xl outline-none border-transparent no-underline flex justify-center items-center cursor-pointer transform transition-all duration-300 ${
+            !value ? "bg-gray-200 cursor-auto" : "bg-sky-300 hover:bg-sky-400"
           }`}
         >
           <span className="absolute inset-0 bg-transparent rounded-xl transition-colors duration-300"></span>
           {displayButtonType}
         </button>
+        {value.length > 0 && (
+          <div className="flex items-start py-5 sm:mx-auto sm:w-full sm:max-w-sm">
+            <h1 className="text-lg font-mono leading-9 tracking-tight text-gray-900">
+              {`Rate: 1 ${optionSend.currency} = ${rate} ${optionReceive.currency} `}
+            </h1>
+          </div>
+        )}
       </div>
     </div>
   );

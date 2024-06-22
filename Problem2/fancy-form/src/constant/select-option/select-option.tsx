@@ -29,15 +29,16 @@ export const SelectOptionField = ({
   onClose,
 }: SelectOptionProp) => {
   return (
-    <div className="">
+    <div>
       {/* Button */}
       <button
-        className="flex items-center justify-between bg-slate-50 opacity-100 text-gray-900 cursor-pointer h-9 rounded-full outline-none select-none border border-gray-100 font-medium px-4 ml-3 shadow-sm shadow-gray-900/10 visible animate-none text-center no-underline relative z-10 will-change-transform transition-transform ease-in transform box-border m-0 min-w-0 appearance-none"
+        className="flex items-center justify-between opacity-100 text-gray-900 cursor-pointer h-9 rounded-full outline-none select-none border border-gray-100 font-medium px-4 ml-3 shadow-sm shadow-gray-900/10 visible animate-none text-center no-underline relative z-10 will-change-transform transition-transform ease-in transform box-border m-0 min-w-0 appearance-none"
         onClick={onClickOpen}
+        style={{ backgroundColor: "white" }}
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center justify-start box-border p-0 m-0 min-w-0">
-            <div className="h-8 w-8 mr-2">
+            <div className="h-8 w-8 mr-2" style={{ marginLeft: "0.1rem" }}>
               <img
                 alt=""
                 src={option.icon}
@@ -62,7 +63,7 @@ export const SelectOptionField = ({
         sx={{ "& .MuiPaper-root": { width: "80%", borderRadius: "15px" } }}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-        Choose a token
+          Choose a token
         </DialogTitle>
         <IconButton
           aria-label="close"
