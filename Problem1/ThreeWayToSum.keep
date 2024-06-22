@@ -1,0 +1,25 @@
+  const sumA = (n: number) => {
+    let sum = 0;
+
+    for (let i = 1; i <= n; i++) {
+      sum += i;
+    }
+
+    return sum;
+  };
+
+  const sumB = (n: number) => {
+    const numbers = Array.from({ length: n }, (v, i) => i + 1);
+    const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+
+    return sum;
+  };
+
+
+  const sumC = (n: number) => {
+    if (n === 1) {
+      return 1;
+    }
+
+    return n + sumC(n - 1);
+  };
