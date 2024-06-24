@@ -1,22 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { InputField } from "@/constant/input-field";
-import { SelectOptionField } from "@/constant/select-option";
+import { InputField } from "@/constants/input-field";
+import { SelectOptionField } from "@/constants/select-option";
 import { DataTokens, DisplayType, TOKENS_PRICE } from "@/utils/token-price";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export const SwapCurrency = () => {
   const [optionSend, setOptionSend] = useState<DataTokens>(TOKENS_PRICE[4]);
-  const [optionReceive, setOptionReceive] = useState<DataTokens>(
-    TOKENS_PRICE[3]
-  );
+  const [optionReceive, setOptionReceive] = useState<DataTokens>(TOKENS_PRICE[3]);
   const [openModel, setOpenModel] = useState<boolean>(false);
   const [openModelReceive, setOpenModelReceive] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [valueReceive, setValueReceive] = useState<string>("");
-  const [displayButtonType, setDisplayButtonType] = useState<DisplayType>(
-    DisplayType.ENTER_INPUT
-  );
+  const [displayButtonType, setDisplayButtonType] = useState<DisplayType>(DisplayType.ENTER_INPUT);
 
   const handleClickOpen = () => {
     setOpenModel(true);
@@ -68,7 +64,7 @@ export const SwapCurrency = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="px-6 py-5 lg:px-8 border-2 border-gray-200 dark:border-gray-400 rounded-2xl w-[480px] bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 text-gray-900 shadow-xl transition duration-300">
+      <div className="px-6 py-5 lg:px-8 border-2 border-gray-200 dark:border-gray-400 rounded-2xl w-[500px] bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 text-gray-900 shadow-xl transition duration-300">
         <div className="flex items-center justify-center pt-5 pb-7 sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt=""
@@ -79,7 +75,7 @@ export const SwapCurrency = () => {
             Swap Currency
           </h2>
         </div>
-        <div className="bg-gray-100 rounded-2xl text-gray-300 text-xl font-medium h-30 leading-5 p-5 relative">
+        <div className="bg-gray-100 rounded-2xl text-gray-300 text-xl font-medium h-35 leading-5 p-5 relative">
           <div className="flex flex-col relative rounded-2xl z-10 w-auto transition-height duration-1000 ease-in-out">
             <div className="min-h-11 rounded-2xl w-auto">
               <div className="block text-sm font-medium leading-6 text-gray-800">
@@ -103,12 +99,12 @@ export const SwapCurrency = () => {
             </div>
           </div>
         </div>
-        <div className=" w-10 relative mx-auto bg-gray-100 border-4 border-white rounded-full">
+        <div className=" w-10 relative mx-auto bg-gray-100 border-4 border-white rounded-lg">
           <div className="inline-flex items-center justify-center w-full mt-1">
             <ArrowDownwardIcon fontSize="small" color="primary" />
           </div>
         </div>
-        <div className="bg-gray-100 rounded-2xl text-gray-500 text-xl font-medium h-30 leading-5 p-5 relative">
+        <div className="bg-gray-100 rounded-2xl text-gray-500 text-xl font-medium h-35 leading-5 p-5 relative">
           <div className="flex flex-col relative rounded-2xl z-10 w-auto transition-height duration-1000 ease-in-out">
             <div className="min-h-11 rounded-2xl w-auto">
               <div className="block text-sm font-medium leading-6 text-gray-500">
@@ -149,7 +145,7 @@ export const SwapCurrency = () => {
         {value.length > 0 && (
           <div className="flex items-start py-5 sm:mx-auto sm:w-full sm:max-w-sm">
             <h1 className="text-lg font-mono leading-9 tracking-tight text-gray-900">
-              {`Rate: 1 ${optionSend.currency} = ${rate} ${optionReceive.currency} `}
+              {`Rate: 1 ${optionSend.currency} = ${rate.toFixed(10)} ${optionReceive.currency} `}
             </h1>
           </div>
         )}

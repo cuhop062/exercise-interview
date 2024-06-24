@@ -2,7 +2,7 @@
 const nextConfig = {
     output: 'standalone',
     eslint: {
-      dirs: ['src/app', 'src/components', 'src/utils', 'src/constants']
+      dirs: ['src/app', 'src/components', 'src/utils', 'src/constants', 'src/hooks']
     },
   };
 
